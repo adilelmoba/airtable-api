@@ -9,6 +9,7 @@
   "author": "Adil",
   "license": "ISC",
   "dependencies": {
-    "airtable": "^0.11.4"
+    "airtable": "^0.11.4",
+    "bootstrap": "^5.2.0-beta1"
   }
 }
