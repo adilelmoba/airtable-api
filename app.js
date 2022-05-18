@@ -8,22 +8,22 @@ const table = base("Table 1");
 
 const getRecords = async () => {
   // SELECT THE WHOLE DATA..
-  // const records = await table.select().firstPage();
+  const records = await table.select().firstPage();
 
   // SELECT ONLY FIELD (statut)
-  const records = table
-    .select({
-      view: "Grid view",
-    })
-    .firstPage(function (err, records) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      records.forEach(function (record) {
-        console.log("Retrieved", record.get("statut"));
-      });
-    });
+  // const records = table
+  //   .select({
+  //     view: "Grid view",
+  //   })
+  //   .firstPage(function (err, records) {
+  //     if (err) {
+  //       console.error(err);
+  //       return;
+  //     }
+  //     records.forEach(function (record) {
+  //       console.log("Retrieved", record.get("statut"));
+  //     });
+  //   });
   console.log(records);
 };
 // getRecords();
