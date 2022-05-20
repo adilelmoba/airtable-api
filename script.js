@@ -52,7 +52,10 @@ fetch(`https://api.airtable.com/v0/appE4myFZ0tLKOB4A/Table%201`, {
               <td contenteditable="true" id="relation_uuid" >${record.fields.relation_uuid}</td>
               <td contenteditable="true" id="notif_text" >${record.fields.notif_text}</td>
               <td contenteditable="true" id="liens_vers" >${record.fields.liens_vers}</td>
-              <td contenteditable="true" id="statut" >${record.fields.statut}</td>
+              <td contenteditable="true" id="statut">
+                <input type="radio" name="statut-${record.id}" value="Nouveau" ${record.fields.statut == 'nouveau' ? 'checked' : ''}> Nouveau <br>
+                <input type="radio" name="statut-${record.id}" value="Vu" ${record.fields.statut == 'vu' ? 'checked' : ''}> Vu
+              </td>
     
               <td>
                 <a 
@@ -92,7 +95,7 @@ fetch(`https://api.airtable.com/v0/appE4myFZ0tLKOB4A/Table%201`, {
       var relation_uuid = container.find('#relation_uuid').html();
       var notif_text = container.find('#notif_text').html();
       var liens_vers = container.find('#liens_vers').html();
-      var statut = container.find('#statut').html();
+      var statut = container.find('#statut input:checked').val().toLowerCase();
 
       let response = fetch(
         "https://api.airtable.com/v0/appE4myFZ0tLKOB4A/Table%201",
@@ -155,7 +158,7 @@ fetch(`https://api.airtable.com/v0/appE4myFZ0tLKOB4A/Table%201`, {
         .done(function (response) {
           console.log(response);
 
-          location.reload();
+          // location.reload();
         })
         .always(function () {
           ajaxRunning = false;
